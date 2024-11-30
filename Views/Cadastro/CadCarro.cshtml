@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Cadastro de Carros";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/site.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="container-car">
+        <h1>@ViewData["Title"]</h1>
+
+        <!-- Formulário de cadastro -->
+        <form id="cadastro-carro">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required>
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" required>
+
+            <label for="ano">Ano:</label>
+            <input type="number" id="ano" name="ano" min="1886" max="2050" required>
+
+            <label for="cor">Cor:</label>
+            <input type="text" id="cor" name="cor" required>
+
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" step="0.01" required> <!-- Campo para o preço -->
+
+            <button type="submit">Cadastrar</button>
+            
+        </form>
+        <br />
+        <a href="/cadastro/ListaCarros"><button id="ver-lista-carro">Ver Lista de Carros</button></a>
+    </div>
+
+    <script>
+              $(document).ready(function () {
+            $("#cadastro-carro").submit(function (e) {
+                e.preventDefault();
+
+                var carro = {
+                    modelo: $("#modelo").val(),
+                    marca: $("#marca").val(),
+                    ano: $("#ano").val(),
+                    cor: $("#cor").val(),
+                    preco: parseFloat($("#preco").val()) // Captura o valor do preço
+                };
+
+                $.ajax({
+                    url: "/cadastro/InserirCarro",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(carro),
+                    success: function (response) {
+                        alert(response.message);
+                        // Limpa o formulário após o cadastro
+                        $("#modelo, #marca, #ano, #cor, #preco").val("");
+                    },
+                    error: function () {
+                        alert("Erro ao cadastrar carro!");
+                    }
+                });
+            });
+        });
+
+    </script>
+
+</body>
+</html>

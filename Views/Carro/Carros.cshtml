@@ -1,0 +1,102 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var carro = ViewData["CarroSelecionado"] as dynamic;
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+    <link rel="stylesheet" href="/css/site.css">
+
+</head>
+<body>
+    <div class="car-container">
+        <div class="car-image">
+            <img src="/img/ONIX.jpg" alt="Imagem do Onix" />
+        </div>
+        <div class="car-details">
+            <h1>Chevrolet Onix LT MT</h1>
+            <p>Ano: 2025</p>
+            <p>Quilometragem: 0 km</p>
+            <p>Cor: Preto</p>
+            <p>Preço: R$ 97.990</p>
+            <p>Descrição: O Chevrolet Onix LT MT 2025 vem com motor 1.0 aspirado de 82 cv, câmbio manual de seis marchas, e é altamente econômico, fazendo até 13,3 km/l na cidade e 16,5 km/l na estrada. Ele inclui uma central multimídia MyLink de 8" com conectividade sem fio para Android Auto e Apple CarPlay, além de Wi-Fi a bordo para sete dispositivos. Em termos de segurança, oferece controles de estabilidade e tração, assistente de partida em aclive, câmera de ré e sensores de estacionamento traseiros.</p>
+            <button class="purchase-button" data-carro="1">Quero esse carro</button>
+        </div>
+    </div>
+    <div class="car-container">
+        <div class="car-image">
+            <img src="/img/KICKS.jpg" alt="Imagem do Kicks" />
+        </div>
+        <div class="car-details">
+            <h1> Nissan Kicks</h1> 
+            <p>Ano: 2024</p>
+            <p>Quilometragem: 0 km</p>
+            <p>Cor: Branco</p>
+            <p>Preço: R$ 106.490</p>
+            <p>Descrição:  Nissan Kicks 2024 na versão Sense é um SUV que oferece uma combinação de tecnologia e segurança a um preço acessível. Equipado com um motor 2.0 aspirado, gera até 143 cv e apresenta um consumo de cerca de 7,8 km/l na cidade e 11,4 km/l na estrada com etanol. A central multimídia de 7 polegadas é compatível com Android Auto e Apple CarPlay, e a versão conta com seis airbags, controle de tração, estabilidade e câmera de ré para maior segurança. O porta-malas tem capacidade de 432 litros, proporcionando bom espaço interno.</p>
+           <button class="purchase-button" data-carro="2">Quero esse carro</button>
+        </div>
+    </div>
+    <div class="car-container">
+        <div class="car-image">
+            <img src="/img/HB20.jpg" alt="Imagem do HB20" />
+        </div>
+        <div class="car-details">
+            <h1> Hyundai HB20 2025 Comfort</h1>
+            <p>Ano: 2025</p>
+            <p>Quilometragem: 0 km</p>
+            <p>Cor: Cinza</p>
+            <p>Preço: R$ 110.490</p>
+            <p>Descrição: A versão intermediária Comfort Plus Turbo AT do Hyundai HB20 2025 possui motor 1.0 turbo de 120 cv e torque de 17,5 kgfm, oferecendo bom desempenho urbano e rodoviário. Equipado com transmissão automática de seis marchas, o modelo inclui itens de segurança como controle de tração, estabilidade e airbags. No interior, destaca-se pela central multimídia de 8 polegadas, ar-condicionado e um porta-malas de 300 litros.</p>
+            <button class="purchase-button" data-carro="3">Quero esse carro</button>
+        </div>
+    </div>
+    <div class="car-container">
+        <div class="car-image">
+            <img src="/img/creta2025.webp" alt="Imagem do Creta" />
+        </div>
+        <div class="car-details">
+            <h1> Hyundai Creta 2025 Limited</h1>
+            <p>Ano: 2025</p>
+            <p>Quilometragem: 0 km</p>
+            <p>Cor: Cinza</p>
+            <p>Preço: R$ 156.490</p>
+            <p>Descrição: O Creta 2025 segue ainda com o motor Kappa 1.0 Turbo GDI Flex, que tem uma potência de 120 cv a 6.000 rpm, tanto para etanol quanto para gasolina.</p>
+            <button class="purchase-button" data-carro="4">Quero esse carro</button>
+        </div>
+    </div>
+    <div class="car-container">
+        <div class="car-image">
+            <img src="/img/nivus_grade_frontal.webp" alt="Imagem do Nivus" />
+        </div>
+        <div class="car-details">
+            <h1> Volkswagen Nivus</h1>
+            <p>Ano: 2024</p>
+            <p>Quilometragem: 0 km</p>
+            <p>Cor: Azul</p>
+            <p>Preço: R$ 119.990</p>
+            <p>Descrição: Suas linhas ficaram mais harmônicas e receberam um toque de agressividade na medida certa para combinar com as novas rodas aro 17”, faróis e lanternas em LED e integradas.</p>
+           <button class="purchase-button" data-carro="5">Quero esse carro</button>
+        </div>
+    </div>
+    
+   <script>
+        // Seleciona todos os botões de compra
+        document.querySelectorAll('.purchase-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Obtém o ID do carro
+                const carroId = this.getAttribute('data-carro');
+                // Redireciona para a página de compra, passando o ID do carro como parâmetro
+                window.location.href = `/Carro/Compradocarro?carro=${carroId}`;
+            });
+        });
+    </script>
+
+</body>
+</html>

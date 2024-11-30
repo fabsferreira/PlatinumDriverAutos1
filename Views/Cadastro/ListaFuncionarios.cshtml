@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PlatinumDriverAutos.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Lista de Funcionários";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/sitelista.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Cargo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in Model)
+            {
+                <tr>
+                    <td>@funcionario.Nome</td>
+                    <td>@funcionario.Email</td>
+                    <td>@funcionario.Telefone</td>
+                    <td>@funcionario.Cargo</td>
+                    <td>
+                        <!-- Botão para editar o funcionário -->
+                        <a href="/cadastro/EditarFuncionario/@funcionario.Id" class="btn btn-edit">Editar</a>
+
+                        <!-- Botão para excluir o funcionário -->
+                        <a href="/cadastro/ExcluirFuncionario/@funcionario.Id" class="btn btn-delete"
+                           onclick="return confirm('Tem certeza que deseja excluir este funcionário?');">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

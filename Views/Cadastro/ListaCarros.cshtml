@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Lista de Carros";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/sitelista.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Ano</th>
+                    <th>Cor</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var carro in Model)
+                {
+                    <tr>
+                        <td>@carro.Modelo</td>
+                        <td>@carro.Marca</td>
+                        <td>@carro.Ano</td>
+                        <td>@carro.Cor</td>
+                        <td>R$ @carro.Preco.ToString("F2")</td>
+                        <td>
+                            <a href="/cadastro/EditarCarro/@carro.Id" class="btn btn-edit">Editar</a>
+                            <form action="/cadastro/ExcluirCarro/@carro.Id" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('Tem certeza que deseja excluir este carro?');">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

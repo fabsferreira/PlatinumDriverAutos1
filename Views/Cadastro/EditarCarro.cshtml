@@ -1,0 +1,32 @@
+﻿@model PlatinumDriverAutos.Models.Carro
+
+@{
+    ViewData["Title"] = "Editar Carro";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/sitelista.css">
+</head>
+<body>
+<h1>Editar Carro</h1>
+
+<form asp-action="SalvarEdicaoCarro" method="post">
+    <input type="hidden" asp-for="Id" />
+    <label for="Modelo">Modelo</label>
+    <input asp-for="Modelo" />
+    <label for="Marca">Marca</label>
+    <input asp-for="Marca" />
+    <label for="Ano">Ano</label>
+    <input asp-for="Ano" />
+    <label for="Cor">Cor</label>
+    <input asp-for="Cor" />
+    <label for="Preco">Preço</label>
+    <input asp-for="Preco" />
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>

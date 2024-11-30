@@ -1,0 +1,106 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var carro = ViewData["CarroSelecionado"] as dynamic;
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra do Carro</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <div class="compra-container">
+        <h1>Confirmação da Compra</h1>
+
+        <div class="car-summary">
+            <img id="carro-imagem" src="" alt="Imagem do carro selecionado" />
+            <div>
+                <h2 id="carro-nome"></h2>
+                <p id="carro-detalhes"></p>
+                <p><strong>Preço:</strong> <span id="carro-preco"></span></p>
+            </div>
+        </div>
+
+        <div class="purchase-info">
+            <h2>Informações do Comprador</h2>
+            <form>
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" required>
+
+                <label for="endereco">Endereço</label>
+                <textarea id="endereco" name="endereco" rows="3" required></textarea>
+
+                <button type="submit">Confirmar Compra</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script para usar o carroId vindo do controlador -->
+    <script>
+        const carroId = @ViewData["carroId"];
+        console.log(`Carro ID recebido: ${carroId}`);
+
+        // Dados dos carros
+        const carros = {
+            1: {
+                nome: "Chevrolet Onix LT MT",
+                detalhes: "Ano: 2025, Quilometragem: 0 km, Cor: Preto.",
+                preco: "R$ 97.990",
+                imagem: "/img/ONIX.jpg"
+            },
+            2: {
+                nome: "Nissan Kicks",
+                detalhes: "Ano: 2024, Quilometragem: 0 km, Cor: Branco.",
+                preco: "R$ 106.490",
+                imagem: "/img/KICKS.jpg"
+            },
+            3: {
+                nome: "Hyundai HB20 2025 Comfort",
+                detalhes: "Ano: 2025, Quilometragem: 0 km, Cor: Cinza.",
+                preco: "R$ 110.490",
+                imagem: "/img/HB20.jpg"
+            },
+            4: {
+                nome: "Hyundai Creta 2025 Limited",
+                detalhes: "Ano: 2025, Quilometragem: 0 km, Cor: Cinza.",
+                preco: "R$ 156.490",
+                imagem: "/img/creta2025.webp"
+            },
+            5: {
+                nome: "Volkswagen Nivus",
+                detalhes: "Ano: 2024, Quilometragem: 0 km, Cor: Azul.",
+                preco: "R$ 119.990",
+                imagem: "/img/nivus_grade_frontal.webp"
+            }
+        };
+
+        // Preencher as informações do carro
+        if (carros[carroId]) {
+            const carro = carros[carroId];
+            document.getElementById('carro-nome').innerText = carro.nome;
+            document.getElementById('carro-detalhes').innerText = carro.detalhes;
+            document.getElementById('carro-preco').innerText = carro.preco;
+            document.getElementById('carro-imagem').src = carro.imagem;
+        } else {
+            document.querySelector('.car-summary').innerHTML = "<p>Carro não encontrado.</p>";
+        }
+
+        // Adiciona o alerta na confirmação de compra
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Previne o envio do formulário
+            alert("Compra confirmada com sucesso!"); // Mostra o alerta
+            // Aqui você pode adicionar uma ação para redirecionar ou processar o envio do formulário
+        });
+    </script>
+</body>
+</html>

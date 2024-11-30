@@ -1,0 +1,30 @@
+﻿@model PlatinumDriverAutos.Models.Funcionario
+
+@{
+    ViewData["Title"] = "Editar Funcionário";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/sitelista.css">
+</head>
+<body>
+<h1>Editar Funcionário</h1>
+
+<form asp-action="SalvarEdicaoFuncionario" method="post">
+    <input type="hidden" asp-for="Id" />
+    <label for="Nome">Nome</label>
+    <input asp-for="Nome" />
+    <label for="Email">E-mail</label>
+    <input asp-for="Email" />
+    <label for="Telefone">Telefone</label>
+    <input asp-for="Telefone" />
+    <label for="Cargo">Cargo</label>
+    <input asp-for="Cargo" />
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>
